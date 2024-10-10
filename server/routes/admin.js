@@ -146,11 +146,9 @@ router.get('/add-post', authMiddleware, async (req, res) => {
 
 
 /**
- * POST/
+ * POST /
  * Admin - Create New Post
- */
-
-
+*/
 router.post('/add-post', authMiddleware, async (req, res) => {
     try {
       try {
@@ -171,8 +169,7 @@ router.post('/add-post', authMiddleware, async (req, res) => {
   });
 
 
-
-  /**
+/**
  * GET /
  * Admin - Create New Post
 */
@@ -202,29 +199,26 @@ router.get('/edit-post/:id', authMiddleware, async (req, res) => {
 
 
 
-  
-/**
- * PUT/
+  /**
+ * PUT /
  * Admin - Create New Post
- */
-
+*/
 router.put('/edit-post/:id', authMiddleware, async (req, res) => {
     try {
-     
   
-     await Post.findByIdAndUpdate(req.params.id,{
-        title : req.body.title,
-        body:req.body.body,
-        updatedAt:Date.now()
-     })
-     res.redirect('/edit-post/${req.params.id')
+      await Post.findByIdAndUpdate(req.params.id, {
+        title: req.body.title,
+        body: req.body.body,
+        updatedAt: Date.now()
+      });
+  
+      res.redirect(`/edit-post/${req.params.id}`);
   
     } catch (error) {
       console.log(error);
     }
   
   });
-
 
 
   /**
